@@ -5,6 +5,8 @@ import de.failex.serversystem.commands.CMD_gamemode;
 import de.failex.serversystem.listener.Listeners;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -42,9 +44,17 @@ public class ServerSystem extends JavaPlugin {
     public static File config = new File("config.yml");
     public static File playerdata = new File("players.yml");
 
+    //FileConfigurations for config and playerdata file
+    public static FileConfiguration configcfg = YamlConfiguration.loadConfiguration(config);
+    public static FileConfiguration playerdatacfg = YamlConfiguration.loadConfiguration(playerdata);
+
+    //Class-Variable for specific methods
+    public static ServerSystem system;
+
 
     @Override
     public void onEnable() {
+        system = this;
         System.out.println("[" + NAME + "] Version " + VERSION + " by " + AUTHOR + " successfully enabled!");
         this.getCommand("alwaysday").setExecutor(new CMD_alwaysday());
         this.getCommand("gamemode").setExecutor(new CMD_gamemode());
@@ -68,4 +78,5 @@ public class ServerSystem extends JavaPlugin {
     public static void startAlwaysDay(World w) {
         alwaysday.add(w);
     }
+
 }
