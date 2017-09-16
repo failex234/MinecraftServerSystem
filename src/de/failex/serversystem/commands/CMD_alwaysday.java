@@ -2,6 +2,7 @@ package de.failex.serversystem.commands;
 
 
 import de.failex.serversystem.ServerSystem;
+import de.failex.serversystem.enums.Strings;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -13,9 +14,9 @@ import org.bukkit.entity.Player;
 /**
  * Sets current time in world to day and prevents any other daytime in this world
  * <p>
- *     Permissions:
- *     - serversystem.alwaysday
- *          Toggle / Set alwaysday for world
+ * Permissions:
+ * - serversystem.alwaysday
+ * Toggle / Set alwaysday for world
  * </p>
  */
 public class CMD_alwaysday implements CommandExecutor {
@@ -29,11 +30,11 @@ public class CMD_alwaysday implements CommandExecutor {
                 World current = p.getWorld();
                 if (ServerSystem.alwaysday.contains(current)) {
                     ServerSystem.alwaysday.remove(current);
-                    p.sendMessage(ServerSystem.PREFIX + ChatColor.GREEN + "Alwaysday has been disabled for world " + current.getName());
+                    p.sendMessage(Strings.ALWAYSDAY_DISABLED.getString().replace("%s", current.getName()));
                 } else {
                     ServerSystem.alwaysday.add(current);
                     ServerSystem.alwaysday.add(current);
-                    p.sendMessage(ServerSystem.PREFIX + ChatColor.GREEN + "Alwaysday has been enabled for world " + current.getName());
+                    p.sendMessage(Strings.ALWAYSDAY_ENABLED.getString().replace("%s", current.getName()));
                 }
             } else {
                 String status = args[0];
@@ -41,26 +42,26 @@ public class CMD_alwaysday implements CommandExecutor {
                 if (status.equals("0") || status.equals("off") || status.equals("false") || status.equals("stop")) {
                     if (ServerSystem.alwaysday.contains(p.getWorld())) {
                         ServerSystem.stopAlwaysDay(p.getWorld());
-                        p.sendMessage(ServerSystem.PREFIX + ChatColor.GREEN + "Alwaysday has been disabled for world " + p.getWorld().getName());
+                        p.sendMessage(Strings.ALWAYSDAY_DISABLED.getString().replace("%s", p.getWorld().getName()));
                     } else {
-                        p.sendMessage(ServerSystem.PREFIX + ChatColor.RED + "Alwaysday is already disabled for world " + p.getWorld().getName());
+                        p.sendMessage(Strings.ALWAYSDAY_ALREADY_DISABLED.getString().replace("%s", p.getWorld().getName()));
                     }
                 } else if (status.equals("1") || status.equals("on") || status.equals("true") || status.equals("start")) {
                     if (ServerSystem.alwaysday.contains(p.getWorld())) {
-                        p.sendMessage(ServerSystem.PREFIX + ChatColor.RED + "Alwaysday is already enabled for world " + p.getWorld().getName());
+                        p.sendMessage(Strings.ALWAYSDAY_ALREADY_ENABLED.getString().replace("%s", p.getWorld().getName()));
                     } else {
                         ServerSystem.alwaysday.add(p.getWorld());
-                        p.sendMessage(ServerSystem.PREFIX + ChatColor.GREEN + "Alwaysday has been enabled for world " + p.getWorld().getName());
+                        p.sendMessage(Strings.ALWAYSDAY_ENABLED.getString().replace("%s", p.getWorld().getName()));
                     }
                 } else if (args[0].equals("help")) {
-                    p.sendMessage("--------- AlwaysDay Help Menu ---------");
-                    p.sendMessage("/alwaysday                    - toggle alwaysday for current world");
-                    p.sendMessage("/alwaysday <0|off|false|stop> - turn alwaysday off for current world");
-                    p.sendMessage("/alwaysday <1|on|true|start>  - turn alwaysday on for current world");
-                    p.sendMessage("----------------------------------------");
+                    p.sendMessage(Strings.ALWAYSDAY_HELP_1.getString());
+                    p.sendMessage(Strings.ALWAYSDAY_HELP_2.getString());
+                    p.sendMessage(Strings.ALWAYSDAY_HELP_3.getString());
+                    p.sendMessage(Strings.ALWAYSDAY_HELP_4.getString());
+                    p.sendMessage(Strings.ALWAYSDAY_HELP_5.getString());
                 } else {
-                    p.sendMessage(ServerSystem.PREFIX + ChatColor.RED + "Argument not recognised!");
-                    p.sendMessage(ServerSystem.PREFIX + ChatColor.GREEN + "Try /alwaysday help");
+                    p.sendMessage(Strings.ARG_UNREC.getString());
+                    p.sendMessage(Strings.TRY_HELP.getString().replace("%s", "alwaysday"));
                 }
             }
         } else {

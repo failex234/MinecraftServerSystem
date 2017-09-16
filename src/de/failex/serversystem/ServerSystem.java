@@ -4,6 +4,7 @@ import de.failex.serversystem.commands.CMD_alwaysday;
 import de.failex.serversystem.commands.CMD_gamemode;
 import de.failex.serversystem.commands.CMD_online;
 import de.failex.serversystem.commands.CMD_ping;
+import de.failex.serversystem.enums.Strings;
 import de.failex.serversystem.listener.Listeners;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -25,7 +26,7 @@ public class ServerSystem extends JavaPlugin {
     public final String AUTHOR = this.getDescription().getAuthors().get(0);
 
     //Prefix of every message sent to any endpoint
-    public static final String PREFIX = ChatColor.RED + "[" + ChatColor.YELLOW + "System" + ChatColor.RED + "] " + ChatColor.RESET;
+    public static final String PREFIX = Strings.PREFIX.getString();
 
     //Contains which player wants to teleport (requested to teleport) to another player
     public static HashMap<UUID, UUID> tpalist = new HashMap<>();
@@ -50,7 +51,7 @@ public class ServerSystem extends JavaPlugin {
     public static FileConfiguration configcfg = YamlConfiguration.loadConfiguration(config);
     public static FileConfiguration playerdatacfg = YamlConfiguration.loadConfiguration(playerdata);
 
-    //Class-Variable for specific methods
+    //Class-Variable for specific methods that you can't run without a static class variable
     public static ServerSystem system;
 
 
@@ -72,7 +73,7 @@ public class ServerSystem extends JavaPlugin {
 
     //Send player a message that the typed command is invalid / unknown
     public static void onUnknownCommand(Player p, String cmd) {
-        p.sendMessage(PREFIX + ChatColor.RED + "Sorry, but the command \"" + cmd + "\" is not known :(");
+        p.sendMessage(Strings.UNKNOWN_COMMAND.getString().replace("%s", cmd));
     }
 
     public static void stopAlwaysDay(World w) {
