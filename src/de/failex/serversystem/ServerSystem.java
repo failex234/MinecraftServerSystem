@@ -2,6 +2,7 @@ package de.failex.serversystem;
 
 import de.failex.serversystem.commands.CMD_alwaysday;
 import de.failex.serversystem.commands.CMD_gamemode;
+import de.failex.serversystem.commands.CMD_online;
 import de.failex.serversystem.listener.Listeners;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -58,6 +59,7 @@ public class ServerSystem extends JavaPlugin {
         System.out.println("[" + NAME + "] Version " + VERSION + " by " + AUTHOR + " successfully enabled!");
         this.getCommand("alwaysday").setExecutor(new CMD_alwaysday());
         this.getCommand("gamemode").setExecutor(new CMD_gamemode());
+        this.getCommand("online").setExecutor(new CMD_online());
         this.getServer().getPluginManager().registerEvents(new Listeners(), this);
     }
 

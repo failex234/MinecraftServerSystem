@@ -5,3 +5,5 @@ url: failex.de
 main: de.failex.serversystem.ServerSystem
 commands:
    alwaysday:
+   gamemode:
+   online:
