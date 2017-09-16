@@ -17,6 +17,10 @@ public enum Strings {
     ALWAYSDAY_HELP_3(PREFIX.getString() + "/alwaysday <0|off|false|stop> - turn alwaysday off for current world"),
     ALWAYSDAY_HELP_4(PREFIX.getString() + "/alwaysday <1|on|true|start>  - turn alwaysday on for current world"),
     ALWAYSDAY_HELP_5(PREFIX.getString() + "----------------------------------------"),
+    HOME_NOT_SET(PREFIX.getString() + "Your home has not been set yet!"),
+    HOME_TELEPORTED(PREFIX.getString() + "Welcome Home!"),
+    HOME_TPD_TO_PLAYERS_HOME(PREFIX.getString() + "Welcome at %s's House!"),
+    HOME_NO_HOME_POINT_FOUND(PREFIX.getString() + "Sorry but %s has no home point yet!")
     ;
 
 

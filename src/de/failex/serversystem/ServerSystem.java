@@ -1,9 +1,6 @@
 package de.failex.serversystem;
 
-import de.failex.serversystem.commands.CMD_alwaysday;
-import de.failex.serversystem.commands.CMD_gamemode;
-import de.failex.serversystem.commands.CMD_online;
-import de.failex.serversystem.commands.CMD_ping;
+import de.failex.serversystem.commands.*;
 import de.failex.serversystem.enums.Strings;
 import de.failex.serversystem.listener.Listeners;
 import org.bukkit.ChatColor;
@@ -63,6 +60,7 @@ public class ServerSystem extends JavaPlugin {
         this.getCommand("gamemode").setExecutor(new CMD_gamemode());
         this.getCommand("online").setExecutor(new CMD_online());
         this.getCommand("ping").setExecutor(new CMD_ping());
+        this.getCommand("home").setExecutor(new CMD_home());
         this.getServer().getPluginManager().registerEvents(new Listeners(), this);
     }
 

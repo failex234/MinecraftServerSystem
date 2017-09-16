@@ -25,6 +25,8 @@ public class CMD_gamemode implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         if (sender.hasPermission("serversystem.gamemode")) {
             Player p = (Player) sender;
+            //Show different usage information when the player has no permission to set the gm
+            //of other players vs. when he has the permission
             if (args.length == 0 && !sender.hasPermission("serversystem.gamemode.other")) {
                 p.sendMessage(ServerSystem.PREFIX + "Gamemode Usage: /gamemode <0|1|2|3>");
                 p.sendMessage(ServerSystem.PREFIX + "More usage information with /gamemode help");
@@ -37,6 +39,7 @@ public class CMD_gamemode implements CommandExecutor {
             } else if (!sender.hasPermission("serversystem.gamemode.other")) {
                 try {
                     int gamemode = Integer.parseInt(args[0]);
+                    //Set gamemode depending on given number
                     switch (gamemode) {
                         case 0:
                             p.setGameMode(GameMode.SURVIVAL);
@@ -60,6 +63,8 @@ public class CMD_gamemode implements CommandExecutor {
                     }
                 }
                 catch(NumberFormatException e) {
+                    //When an exception is thrown assume that player sent
+                    //characters rather than a number and analyze the chars
                     String gamemode = args[0];
                     if (gamemode.startsWith("su")) {
                         p.setGameMode(GameMode.SURVIVAL);
