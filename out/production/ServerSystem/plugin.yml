@@ -1,7 +1,0 @@
-name: ServerSystem
-version: 0.1b
-author: failex234
-url: failex.de
-main: de.failex.serversystem.ServerSystem
-commands:
-   alwaysday:
