@@ -19,6 +19,7 @@ import org.bukkit.entity.Player;
  * Toggle / Set alwaysday for world
  * </p>
  */
+//TODO Write BukkitTask for alwaysday
 public class CMD_alwaysday implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {

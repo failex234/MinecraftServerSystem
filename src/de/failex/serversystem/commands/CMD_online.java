@@ -14,6 +14,7 @@ public class CMD_online implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
+            //Just return the onlineplayers Integer from the main class
             if (ServerSystem.onlineplayers > 1) {
                 p.sendMessage(ServerSystem.PREFIX + ServerSystem.onlineplayers + " players are currently online!");
             } else {

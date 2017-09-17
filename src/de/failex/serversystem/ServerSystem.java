@@ -37,7 +37,8 @@ public class ServerSystem extends JavaPlugin {
     //Contains every world where the daytime should not change
     public static ArrayList<World> alwaysday = new ArrayList<>();
 
-    //Number of how many players are currently online on the server
+    //Number of how many players are currently online on the server, gets incremented
+    //and decremented by the PlayerJoin- and PlayerQuitEvent in the Listener class
     public static int onlineplayers;
 
     //Config for changing plugin settings and Playerdata File for storing homes and other stuff from players

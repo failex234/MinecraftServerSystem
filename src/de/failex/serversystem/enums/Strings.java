@@ -1,8 +1,8 @@
 package de.failex.serversystem.enums;
 
-import de.failex.serversystem.ServerSystem;
 import org.bukkit.ChatColor;
 
+//TODO: Define Message Colors!
 public enum Strings {
     PREFIX(ChatColor.RED + "[" + ChatColor.YELLOW + "System" + ChatColor.RED + "] " + ChatColor.RESET),
     UNKNOWN_COMMAND(PREFIX.getString() + ChatColor.RED + "Sorry, but the command \"%s\" is not known!"),
@@ -20,7 +20,26 @@ public enum Strings {
     HOME_NOT_SET(PREFIX.getString() + "Your home has not been set yet!"),
     HOME_TELEPORTED(PREFIX.getString() + "Welcome Home!"),
     HOME_TPD_TO_PLAYERS_HOME(PREFIX.getString() + "Welcome at %s's House!"),
-    HOME_NO_HOME_POINT_FOUND(PREFIX.getString() + "Sorry but %s has no home point yet!")
+    HOME_NO_HOME_POINT_FOUND(PREFIX.getString() + "Sorry but %s has no home point yet!"),
+    GAMEMODE_USAGE_RESTRICTED(PREFIX.getString() + "Gamemode Usage: /gamemode <0|1|2|3>"),
+    GAMEMODE_MORE_INFO(PREFIX.getString() + "More usage information with /gamemode help"),
+    GAMEMODE_USAGE_PERMITTED_1(PREFIX.getString() + "Gamemode Usage: /gamemode <0|1|2|3> {player}"),
+    GAMEMODE_USAGE_PERMITTED_2(PREFIX.getString() + "The player argument is optional!"),
+    GAMEMODE_INT_INVALID(PREFIX.getString() + ChatColor.RED + "Gamemode Number invalid!"),
+    GAMEMODE_INVALID(PREFIX.getString() + ChatColor.RED + "Gamemode invalid!"),
+    GAMEMODE_SET_TO(PREFIX.getString() + "Gamemode set to " + ChatColor.RED + "%s"),
+    GAMEMODE_SET_TO_PLAYER(PREFIX.getString() + "Gamemode of %s changed to " + ChatColor.RED + "%g"),
+    GAMEMODE_SET_BY(PREFIX.getString() + "Your Gamemode was changed by %s"),
+    GAMEMODE_HELP_WITH(PREFIX.getString() + "Help with: /gamemode help"),
+    GAMEMODE_HELP_TITLE("--------- Gamemode Help Menu ---------"),
+    GAMEMODE_HELP_FOOTER("----------------------------------------"),
+    GAMEMODE_HELP_1("1. /gamemode <0|1|2|3> - Set own gamemode"),
+    GAMEMODE_HELP_RESTRICTED_2("2. /gamemode <su|cr|ad|sp> - Set own gamemode"),
+    GAMEMODE_HELP_RESTRICTED_3("3. /gamemode help - Show this menu"),
+    GAMEMODE_HELP_PERMITTED_2("2. /gamemode <su|cr|ad|sp>- Set own gamemode"),
+    GAMEMODE_HELP_PERMITTED_3("3. /gamemode <0|1|2|3> <player> - Set gamemode of player"),
+    GAMEMODE_HELP_PERMITTED_4("4. /gamemode <su|cr|ad|sp> <player> - Set gamemode of player"),
+    GAMEMODE_HELP_PERMITTED_5("5. /gamemode help - Show this menu"),
     ;
 
 

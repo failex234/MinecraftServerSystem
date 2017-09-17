@@ -2,6 +2,7 @@ package de.failex.serversystem.commands;
 
 
 import de.failex.serversystem.ServerSystem;
+import de.failex.serversystem.enums.Strings;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -28,13 +29,13 @@ public class CMD_gamemode implements CommandExecutor {
             //Show different usage information when the player has no permission to set the gm
             //of other players vs. when he has the permission
             if (args.length == 0 && !sender.hasPermission("serversystem.gamemode.other")) {
-                p.sendMessage(ServerSystem.PREFIX + "Gamemode Usage: /gamemode <0|1|2|3>");
-                p.sendMessage(ServerSystem.PREFIX + "More usage information with /gamemode help");
+                p.sendMessage(Strings.GAMEMODE_USAGE_RESTRICTED.getString());
+                p.sendMessage(Strings.GAMEMODE_MORE_INFO.getString());
                 return true;
             } else if (args.length == 0) {
-                p.sendMessage(ServerSystem.PREFIX + "Gamemode Usage: /gamemode <0|1|2|3> {player}");
-                p.sendMessage(ServerSystem.PREFIX + "The player argument is optional!");
-                p.sendMessage(ServerSystem.PREFIX + "More usage information with /gamemode help");
+                p.sendMessage(Strings.GAMEMODE_USAGE_PERMITTED_1.getString());
+                p.sendMessage(Strings.GAMEMODE_USAGE_PERMITTED_2.getString());
+                p.sendMessage(Strings.GAMEMODE_MORE_INFO.getString());
                 return true;
             } else if (!sender.hasPermission("serversystem.gamemode.other")) {
                 try {
@@ -43,23 +44,23 @@ public class CMD_gamemode implements CommandExecutor {
                     switch (gamemode) {
                         case 0:
                             p.setGameMode(GameMode.SURVIVAL);
-                            p.sendMessage(ServerSystem.PREFIX + "Gamemode set to " + ChatColor.RED + "Survival");
+                            p.sendMessage(Strings.GAMEMODE_SET_TO.getString().replace("%s", "Survival"));
                             break;
                         case 1:
                             p.setGameMode(GameMode.CREATIVE);
-                            p.sendMessage(ServerSystem.PREFIX + "Gamemode set to " + ChatColor.RED + "Creative");
+                            p.sendMessage(Strings.GAMEMODE_SET_TO.getString().replace("%s", "Creative"));
                             break;
                         case 2:
                             p.setGameMode(GameMode.ADVENTURE);
-                            p.sendMessage(ServerSystem.PREFIX + "Gamemode set to " + ChatColor.RED + "Adventure");
+                            p.sendMessage(Strings.GAMEMODE_SET_TO.getString().replace("%s", "Adventure"));
                             break;
                         case 3:
                             p.setGameMode(GameMode.SPECTATOR);
-                            p.sendMessage(ServerSystem.PREFIX + "Gamemode set to " + ChatColor.RED + "Spectator");
+                            p.sendMessage(Strings.GAMEMODE_SET_TO.getString().replace("%s", "Spectator"));
                             break;
                         default:
-                            p.sendMessage(ServerSystem.PREFIX + "Gamemode Number invalid");
-                            p.sendMessage(ServerSystem.PREFIX + "Help with: /gamemode help");
+                            p.sendMessage(Strings.GAMEMODE_INT_INVALID.getString());
+                            p.sendMessage(Strings.GAMEMODE_HELP_WITH.getString());
                     }
                 }
                 catch(NumberFormatException e) {
@@ -68,36 +69,36 @@ public class CMD_gamemode implements CommandExecutor {
                     String gamemode = args[0];
                     if (gamemode.startsWith("su")) {
                         p.setGameMode(GameMode.SURVIVAL);
-                        p.sendMessage(ServerSystem.PREFIX + "Gamemode set to " + ChatColor.RED + "Survival");
+                        p.sendMessage(Strings.GAMEMODE_SET_TO.getString().replace("%s", "Survival"));
                     } else if (gamemode.startsWith("cr")) {
                         p.setGameMode(GameMode.CREATIVE);
-                        p.sendMessage(ServerSystem.PREFIX + "Gamemode set to " + ChatColor.RED + "Creative");
+                        p.sendMessage(Strings.GAMEMODE_SET_TO.getString().replace("%s", "Creative"));
                     } else if (gamemode.startsWith("ad")) {
                         p.setGameMode(GameMode.ADVENTURE);
-                        p.sendMessage(ServerSystem.PREFIX + "Gamemode set to " + ChatColor.RED + "Adventure");
+                        p.sendMessage(Strings.GAMEMODE_SET_TO.getString().replace("%s", "Adventure"));
                     } else if (gamemode.startsWith("sp")) {
                         p.setGameMode(GameMode.SPECTATOR);
-                        p.sendMessage(ServerSystem.PREFIX + "Gamemode set to " + ChatColor.RED + "Spectator");
+                        p.sendMessage(Strings.GAMEMODE_SET_TO.getString().replace("%s", "Spectator"));
                     } else {
-                        p.sendMessage(ServerSystem.PREFIX + "Gamemode invalid!");
-                        p.sendMessage(ServerSystem.PREFIX + "Help with /gamemode help");
+                        p.sendMessage(Strings.GAMEMODE_INVALID.getString());
+                        p.sendMessage(Strings.GAMEMODE_HELP_WITH.getString());
                     }
                     return false;
                 }
             } else if(args.length >= 1 && args[0].equals("help") && !p.hasPermission("serversystem.gamemode.other")) {
-                p.sendMessage("--------- Gamemode Help Menu ---------");
-                p.sendMessage("1. /gamemode <0|1|2|3> - Set own gamemode");
-                p.sendMessage("2. /gamemode <su|cr|ad|sp> - Set own gamemode");
-                p.sendMessage("3. /gamemode help - Show this menu");
-                p.sendMessage("----------------------------------------");
+                p.sendMessage(Strings.GAMEMODE_HELP_TITLE.getString());
+                p.sendMessage(Strings.GAMEMODE_HELP_1.getString());
+                p.sendMessage(Strings.GAMEMODE_HELP_RESTRICTED_2.getString());
+                p.sendMessage(Strings.GAMEMODE_HELP_RESTRICTED_3.getString());
+                p.sendMessage(Strings.GAMEMODE_HELP_FOOTER.getString());
             } else if(args.length >= 1 && args[0].equals("help") && p.hasPermission("serversystem.gamemode.other")) {
-                p.sendMessage("--------- Gamemode Help Menu ---------");
-                p.sendMessage("1. /gamemode <0|1|2|3> - Set own gamemode");
-                p.sendMessage("2. /gamemode <su|cr|ad|sp>- Set own gamemode");
-                p.sendMessage("3. /gamemode <0|1|2|3> <player> - Set gamemode of player");
-                p.sendMessage("4. /gamemode <su|cr|ad|sp> <player> - Set gamemode of player");
-                p.sendMessage("5. /gamemode help - Show this menu");
-                p.sendMessage("----------------------------------------");
+                p.sendMessage(Strings.GAMEMODE_HELP_TITLE.getString());
+                p.sendMessage(Strings.GAMEMODE_HELP_1.getString());
+                p.sendMessage(Strings.GAMEMODE_HELP_PERMITTED_2.getString());
+                p.sendMessage(Strings.GAMEMODE_HELP_PERMITTED_3.getString());
+                p.sendMessage(Strings.GAMEMODE_HELP_PERMITTED_4.getString());
+                p.sendMessage(Strings.GAMEMODE_HELP_PERMITTED_5.getString());
+                p.sendMessage(Strings.GAMEMODE_HELP_FOOTER.getString());
             } else if (args.length == 2){
                 try {
                     int gamemode = Integer.parseInt(args[0]);
@@ -105,27 +106,27 @@ public class CMD_gamemode implements CommandExecutor {
                     switch (gamemode) {
                         case 0:
                             other.setGameMode(GameMode.SURVIVAL);
-                            other.sendMessage(ServerSystem.PREFIX + "Your Gamemode was set to Survival by " + ChatColor.RED + p.getName());
-                            p.sendMessage(ServerSystem.PREFIX + "Gamemode of " + args[1] + ChatColor.RED + "Survival");
+                            other.sendMessage(Strings.GAMEMODE_SET_BY.getString().replace("%s", p.getName()));
+                            p.sendMessage(Strings.GAMEMODE_SET_TO_PLAYER.getString().replace("%s", other.getName()).replace("%g", "Survival"));
                             break;
                         case 1:
                             other.setGameMode(GameMode.CREATIVE);
-                            other.sendMessage(ServerSystem.PREFIX + "Your Gamemode was set to Creative by " + ChatColor.RED + p.getName());
-                            p.sendMessage(ServerSystem.PREFIX + "Gamemode of " + args[1] +  ChatColor.RED + "Creative");
+                            other.sendMessage(Strings.GAMEMODE_SET_BY.getString().replace("%s", p.getName()));
+                            p.sendMessage(Strings.GAMEMODE_SET_TO_PLAYER.getString().replace("%s", other.getName()).replace("%g", "Creative"));
                             break;
                         case 2:
                             other.setGameMode(GameMode.ADVENTURE);
-                            other.sendMessage(ServerSystem.PREFIX + "Your Gamemode was set to Adventure by " + ChatColor.RED + p.getName());
-                            p.sendMessage(ServerSystem.PREFIX + "Gamemode of " + args[1] +  ChatColor.RED + "Adventure");
+                            other.sendMessage(Strings.GAMEMODE_SET_BY.getString().replace("%s", p.getName()));
+                            p.sendMessage(Strings.GAMEMODE_SET_TO_PLAYER.getString().replace("%s", other.getName()).replace("%g", "Adventure"));
                             break;
                         case 3:
                             other.setGameMode(GameMode.SPECTATOR);
-                            other.sendMessage(ServerSystem.PREFIX + "Your Gamemode was set to Spectator by " + ChatColor.RED + p.getName());
-                            p.sendMessage(ServerSystem.PREFIX + "Gamemode of " + args[1] +  ChatColor.RED + "Spectator");
+                            other.sendMessage(Strings.GAMEMODE_SET_BY.getString().replace("%s", p.getName()));
+                            p.sendMessage(Strings.GAMEMODE_SET_TO_PLAYER.getString().replace("%s", other.getName()).replace("%g", "Spectator"));
                             break;
                         default:
-                            p.sendMessage(ServerSystem.PREFIX + "Gamemode Number invalid");
-                            p.sendMessage(ServerSystem.PREFIX + "Help with: /gamemode help");
+                            p.sendMessage(Strings.GAMEMODE_INT_INVALID.getString());
+                            p.sendMessage(Strings.GAMEMODE_HELP_WITH.getString());
                     }
                 }
                 catch(NumberFormatException e) {
@@ -133,29 +134,29 @@ public class CMD_gamemode implements CommandExecutor {
                     Player other = Bukkit.getServer().getPlayer(args[1]);
                     if (gamemode.startsWith("su")) {
                         other.setGameMode(GameMode.SURVIVAL);
-                        other.sendMessage(ServerSystem.PREFIX + "Your Gamemode was set to Survival by " + ChatColor.RED + p.getName());
-                        p.sendMessage(ServerSystem.PREFIX + "Gamemode of " + args[1] + ChatColor.RED + "Survival");
+                        other.sendMessage(Strings.GAMEMODE_SET_BY.getString().replace("%s", p.getName()));
+                        p.sendMessage(Strings.GAMEMODE_SET_TO_PLAYER.getString().replace("%s", other.getName()).replace("%g", "Survival"));
                     } else if (gamemode.startsWith("cr")) {
                         other.setGameMode(GameMode.CREATIVE);
-                        other.sendMessage(ServerSystem.PREFIX + "Your Gamemode was set to Creative by " + ChatColor.RED + p.getName());
-                        p.sendMessage(ServerSystem.PREFIX + "Gamemode of " + args[1] + ChatColor.RED + "Creative");
+                        other.sendMessage(Strings.GAMEMODE_SET_BY.getString().replace("%s", p.getName()));
+                        p.sendMessage(Strings.GAMEMODE_SET_TO_PLAYER.getString().replace("%s", other.getName()).replace("%g", "Creative"));
                     } else if (gamemode.startsWith("ad")) {
                         other.setGameMode(GameMode.ADVENTURE);
-                        other.sendMessage(ServerSystem.PREFIX + "Your Gamemode was set to Adventure by " + ChatColor.RED + p.getName());
-                        p.sendMessage(ServerSystem.PREFIX + "Gamemode of " + args[1] + ChatColor.RED + "Adventure");
+                        other.sendMessage(Strings.GAMEMODE_SET_BY.getString().replace("%s", p.getName()));
+                        p.sendMessage(Strings.GAMEMODE_SET_TO_PLAYER.getString().replace("%s", other.getName()).replace("%g", "Adventure"));
                     } else if (gamemode.startsWith("sp")) {
                         other.setGameMode(GameMode.SPECTATOR);
-                        other.sendMessage(ServerSystem.PREFIX + "Your Gamemode was set to Spectator by " + ChatColor.RED + p.getName());
-                        p.sendMessage(ServerSystem.PREFIX + "Gamemode of " + args[1] + ChatColor.RED + "Spectator");
+                        other.sendMessage(Strings.GAMEMODE_SET_BY.getString().replace("%s", p.getName()));
+                        p.sendMessage(Strings.GAMEMODE_SET_TO_PLAYER.getString().replace("%s", other.getName()).replace("%g", "Spectator"));
                     } else {
-                        other.sendMessage(ServerSystem.PREFIX + "Gamemode invalid!");
-                        other.sendMessage(ServerSystem.PREFIX + "Help with /gamemode help");
+                        other.sendMessage(Strings.GAMEMODE_INVALID.getString());
+                        other.sendMessage(Strings.GAMEMODE_HELP_WITH.getString());
                     }
                     return false;
                 }
             } else {
-                p.sendMessage(ServerSystem.PREFIX + ChatColor.RED + "Argument not recognised!");
-                p.sendMessage(ServerSystem.PREFIX + ChatColor.GREEN + "Try /gamemode help");
+                p.sendMessage(Strings.ARG_UNREC.getString());
+                p.sendMessage(Strings.TRY_HELP.getString().replace("%s","gamemode"));
             }
         } else {
             ServerSystem.onUnknownCommand((Player) sender, cmd.getName());

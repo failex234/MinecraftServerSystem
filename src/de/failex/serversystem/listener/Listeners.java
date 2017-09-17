@@ -36,7 +36,7 @@ public class Listeners implements Listener {
     /*
      * Double-Jump Section
      */
-
+    //TODO: Test and improve
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
         if (!e.getPlayer().isFlying() && !e.getPlayer().getAllowFlight()) {
