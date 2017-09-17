@@ -1,6 +1,7 @@
 package de.failex.serversystem.commands;
 
 import de.failex.serversystem.ServerSystem;
+import de.failex.serversystem.enums.Strings;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,17 +17,17 @@ public class CMD_online implements CommandExecutor {
             Player p = (Player) sender;
             //Just return the onlineplayers Integer from the main class
             if (ServerSystem.onlineplayers > 1) {
-                p.sendMessage(ServerSystem.PREFIX + ServerSystem.onlineplayers + " players are currently online!");
+                p.sendMessage(Strings.PLAYERS_ONLINE.getString().replace("%d", ServerSystem.onlineplayers + ""));
             } else {
-                p.sendMessage(ServerSystem.PREFIX + ServerSystem.onlineplayers + " player is currently online!");
+                p.sendMessage(Strings.PLAYER_ONLINE.getString());
             }
             return true;
         }
 
         if (ServerSystem.onlineplayers > 1 || ServerSystem.onlineplayers == 0) {
-            sender.sendMessage(ServerSystem.PREFIX + ServerSystem.onlineplayers + " players are currently online!");
+            sender.sendMessage(Strings.PLAYERS_ONLINE.getString().replace("%d", ServerSystem.onlineplayers + ""));
         } else {
-            sender.sendMessage(ServerSystem.PREFIX + ServerSystem.onlineplayers + " player is currently online!");
+            sender.sendMessage(Strings.PLAYER_ONLINE.getString());
         }
         return true;
     }

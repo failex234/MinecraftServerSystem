@@ -51,6 +51,18 @@ public enum Strings {
     SETSPAWN_HELP_1("1. /setspawn - Set the world spawn to your position"),
     SETSPAWN_HELP_2("2. /setspawn help - Shows this menu"),
     SETSPAWN_HELP_FOOTER("-------------------------------------------"),
+    PLAYERS_ONLINE(PREFIX.getString() + "%d players are currently online!"),
+    PLAYER_ONLINE(PREFIX.getString() + "1 player is currently online!"),
+    PING_NOTICE(PREFIX.getString() + "Your ping is %dms"),
+    PING_NOTICE_OTHER(PREFIX.getString() + "The ping of %s is %dms"),
+    PING_CONSOLE(PREFIX.getString() + "This is the console, your ping should normally be around 0ms"),
+    PING_HELP_TITLE("--------- Ping Help Menu ---------"),
+    PING_HELP_1("1. /ping <player> - Show latency of player"),
+    PING_HELP_1_UNPREV("1. /ping - Show your ping"),
+    PING_HELP_2("2. /ping - Show your ping"),
+    PING_HELP_2_UNPREV("2. /ping help - Show this menu"),
+    PING_HELP_3("3. /ping help - Show this menu"),
+    PING_HELP_FOOTER("----------------------------------"),
     ;
 
 
