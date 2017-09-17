@@ -42,6 +42,10 @@ public enum Strings {
     GAMEMODE_HELP_PERMITTED_4("4. /gamemode <su|cr|ad|sp> <player> - Set gamemode of player"),
     GAMEMODE_HELP_PERMITTED_5("5. /gamemode help - Show this menu"),
     SETHOME_HOME_SET(PREFIX.getString() + "Your home point was successfully set!"),
+    SETHOME_HELP_TITLE("------------- SetHome Help Menu -------------"),
+    SETHOME_HELP_1("1. /sethome - Sets your homepoint"),
+    SETHOME_HELP_2("2. /sethome help - Shows this menu"),
+    SETHOME_HELP_FOOTER("---------------------------------------------"),
     ;
 
 
