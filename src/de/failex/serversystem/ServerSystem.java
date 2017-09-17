@@ -3,7 +3,6 @@ package de.failex.serversystem;
 import de.failex.serversystem.commands.*;
 import de.failex.serversystem.enums.Strings;
 import de.failex.serversystem.listener.Listeners;
-import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -62,6 +61,7 @@ public class ServerSystem extends JavaPlugin {
         this.getCommand("online").setExecutor(new CMD_online());
         this.getCommand("ping").setExecutor(new CMD_ping());
         this.getCommand("home").setExecutor(new CMD_home());
+        this.getCommand("sethome").setExecutor(new CMD_sethome());
         this.getServer().getPluginManager().registerEvents(new Listeners(), this);
     }
 

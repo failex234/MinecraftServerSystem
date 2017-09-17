@@ -2,10 +2,11 @@ package de.failex.serversystem.enums;
 
 import org.bukkit.ChatColor;
 
-//TODO: Define Message Colors!
+//TODO: Define Message Colors, Unify Help Menu Headers and Footers
 public enum Strings {
     PREFIX(ChatColor.RED + "[" + ChatColor.YELLOW + "System" + ChatColor.RED + "] " + ChatColor.RESET),
     UNKNOWN_COMMAND(PREFIX.getString() + ChatColor.RED + "Sorry, but the command \"%s\" is not known!"),
+    ONLY_PLAYER_COMMAND(PREFIX.getString() + "You need to be a player to execute this command!"),
     ARG_UNREC(PREFIX.getString() + ChatColor.RED + "Argument not recognised!"),
     TRY_HELP(PREFIX.getString() + ChatColor.GREEN + "Try /%s help"),
     ALWAYSDAY_DISABLED(PREFIX.getString() + ChatColor.GREEN + "Alwaysday has been disabled for world %s"),
@@ -40,6 +41,7 @@ public enum Strings {
     GAMEMODE_HELP_PERMITTED_3("3. /gamemode <0|1|2|3> <player> - Set gamemode of player"),
     GAMEMODE_HELP_PERMITTED_4("4. /gamemode <su|cr|ad|sp> <player> - Set gamemode of player"),
     GAMEMODE_HELP_PERMITTED_5("5. /gamemode help - Show this menu"),
+    SETHOME_HOME_SET(PREFIX.getString() + "Your home point was successfully set!"),
     ;
 
 

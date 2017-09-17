@@ -16,6 +16,7 @@ import org.bukkit.entity.Player;
  *      - serversystem.ping.other
  * </p>
  */
+//TODO Migrate Strings to enum
 public class CMD_ping implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
