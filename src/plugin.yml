@@ -10,3 +10,4 @@ commands:
    ping:
    home:
    sethome:
+   setspawn:
