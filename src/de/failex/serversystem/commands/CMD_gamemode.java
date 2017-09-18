@@ -4,7 +4,6 @@ package de.failex.serversystem.commands;
 import de.failex.serversystem.ServerSystem;
 import de.failex.serversystem.enums.Strings;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

@@ -1,7 +1,6 @@
 package de.failex.serversystem.commands;
 
 
-import de.failex.serversystem.ServerSystem;
 import de.failex.serversystem.enums.Strings;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -39,8 +38,9 @@ public class CMD_ping implements CommandExecutor {
                 }
             } else {
                 if (sender.hasPermission("serversystem.ping.other")) {
-                    Player p = Bukkit.getServer().getPlayer(args[0]);
-                    sender.sendMessage(Strings.PING_NOTICE_OTHER.getString().replace("%s", args[0]).replace("%d",((CraftPlayer) sender).getHandle().ping + ""));
+                    Player p;
+                    p = Bukkit.getServer().getPlayer(args[0]);
+                    sender.sendMessage(Strings.PING_NOTICE_OTHER.getString().replace("%s", args[0]).replace("%d",((CraftPlayer) p).getHandle().ping + ""));
                 } else {
                     sender.sendMessage(Strings.PING_NOTICE.getString().replace("%d",((CraftPlayer) sender).getHandle().ping + ""));
                 }

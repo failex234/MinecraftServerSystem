@@ -44,11 +44,4 @@ public class ConfigManager {
         return (String) ServerSystem.playerdatacfg.get(player + "." + key);
     }
 
-    /**
-     * Reload config
-     */
-    public static void reloadConfig() {
-        //TODO: Reload File Configurations
-        ServerSystem.system.reloadConfig();
-    }
 }
