@@ -49,18 +49,19 @@ public class CMD_sudo implements CommandExecutor {
                             return false;
                         }
 
-                        //Concat command + arguments into one string
-                        String command = "";
+                        //Append command + arguments into one string
+                        StringBuilder command = new StringBuilder("");
                         for (String argument : args) {
                             if (argument.equals(args[0])) continue;
-                            command += argument + " ";
+                            command.append(argument);
+                            command.append(" ");
                         }
 
                         //Notifying player
                         sender.sendMessage(Strings.SUDO_RUNNING.getString().replace("%s", sudo.getName()).replace("%c", command));
 
                         //Run command as other user
-                        sudo.performCommand(command);
+                        sudo.performCommand(command.toString());
                         return true;
                 }
             }
