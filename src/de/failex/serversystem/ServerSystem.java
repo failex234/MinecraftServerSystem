@@ -21,9 +21,6 @@ public class ServerSystem extends JavaPlugin {
     private final String VERSION = this.getDescription().getVersion();
     private final String AUTHOR = this.getDescription().getAuthors().get(0);
 
-    //Prefix of every message sent to any endpoint
-    public static final String PREFIX = Strings.PREFIX.getString();
-
     //Contains which player wants to teleport (requested to teleport) to another player
     public static HashMap<UUID, UUID> tpalist = new HashMap<>();
 
