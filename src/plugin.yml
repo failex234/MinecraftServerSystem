@@ -12,3 +12,4 @@ commands:
    sethome:
    setspawn:
    setwarp:
+   spawn:

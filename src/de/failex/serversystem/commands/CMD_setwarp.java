@@ -9,6 +9,13 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+/**
+ * Creates a new warp at the players position
+ * <p>
+ *     Permissions:
+ *     - serversystem.setwarp
+ * </p>
+ */
 public class CMD_setwarp implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
