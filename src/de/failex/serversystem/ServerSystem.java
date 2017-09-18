@@ -65,6 +65,7 @@ public class ServerSystem extends JavaPlugin {
         this.getCommand("setspawn").setExecutor(new CMD_setspawn());
         this.getCommand("setwarp").setExecutor(new CMD_setwarp());
         this.getCommand("spawn").setExecutor(new CMD_spawn());
+        this.getCommand("sudo").setExecutor(new CMD_sudo());
         this.getServer().getPluginManager().registerEvents(new Listeners(), this);
     }
 

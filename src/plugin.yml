@@ -13,3 +13,4 @@ commands:
    setspawn:
    setwarp:
    spawn:
+   sudo:

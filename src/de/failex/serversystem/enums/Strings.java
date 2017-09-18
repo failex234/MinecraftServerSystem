@@ -72,7 +72,15 @@ public enum Strings {
     SETWARP_CANT_CREATE(PREFIX.getString() + "The warp \"%s\" already exists!"),
     SETWARP_DELETED(PREFIX.getString() + "Successfully deleted warp \"%s\"!"),
     SETWARP_CANT_DELETE(PREFIX.getString() + "The warp \"%s\" doesn't exist!"),
-    SETWARP_NO_ARG(PREFIX.getString() + "You forgot the name of your new warp point")
+    SETWARP_NO_ARG(PREFIX.getString() + "You forgot the name of your new warp point"),
+    SUDO_MISSING_ARG(PREFIX.getString() + "You are missing a player or a command!"),
+    SUDO_HELP_TITLE("----------- Sudo Help Menu -----------"),
+    SUDO_HELP_1("1. /sudo <player> <command> - Force player to run command"),
+    SUDO_HELP_2("2. /sudo help - Shows this menu"),
+    SUDO_HELP_FOOTER("---------------------------------------"),
+    SUDO_NOT_ALLOWED_TO_SUDO(PREFIX.getString() + "You're not allowed to sudo %s!"),
+    SUDO_RUNNING(PREFIX.getString() + "Forcing %s to run %c..."),
+    SUDO_PLAYER_NOT_ONLINE(PREFIX.getString() + "This player doesn't seem to be online!"),
     ;
 
 
