@@ -17,9 +17,9 @@ import java.util.UUID;
 public class ServerSystem extends JavaPlugin {
 
     //Get Plugin information from plugin.yml
-    public final String NAME = this.getDescription().getName();
-    public final String VERSION = this.getDescription().getVersion();
-    public final String AUTHOR = this.getDescription().getAuthors().get(0);
+    private final String NAME = this.getDescription().getName();
+    private final String VERSION = this.getDescription().getVersion();
+    private final String AUTHOR = this.getDescription().getAuthors().get(0);
 
     //Prefix of every message sent to any endpoint
     public static final String PREFIX = Strings.PREFIX.getString();
@@ -41,8 +41,8 @@ public class ServerSystem extends JavaPlugin {
     public static int onlineplayers;
 
     //Config for changing plugin settings and Playerdata File for storing homes and other stuff from players
-    public static File config = new File("config.yml");
-    public static File playerdata = new File("players.yml");
+    private static File config = new File("config.yml");
+    private static File playerdata = new File("players.yml");
 
     //FileConfigurations for config and playerdata file
     public static FileConfiguration configcfg = YamlConfiguration.loadConfiguration(config);

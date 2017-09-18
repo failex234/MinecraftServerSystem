@@ -52,7 +52,7 @@ public class CMD_sudo implements CommandExecutor {
                         //Concat command + arguments into one string
                         String command = "";
                         for (String argument : args) {
-                            if (args.equals(args[0])) continue;
+                            if (argument.equals(args[0])) continue;
                             command += argument + " ";
                         }
 
