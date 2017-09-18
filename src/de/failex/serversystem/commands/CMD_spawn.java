@@ -8,6 +8,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+/**
+ * Teleports player to the spawn
+ */
 //TODO: Exception Catcher, maybe config is changed and Integer and Float can't parse that, maybe help menu stub
 public class CMD_spawn implements CommandExecutor {
     @Override
