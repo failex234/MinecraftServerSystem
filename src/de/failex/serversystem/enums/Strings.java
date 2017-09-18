@@ -63,6 +63,16 @@ public enum Strings {
     PING_HELP_2_UNPREV("2. /ping help - Show this menu"),
     PING_HELP_3("3. /ping help - Show this menu"),
     PING_HELP_FOOTER("----------------------------------"),
+    SETWARP_HELP_TITLE("----------- SetWarp Help Menu -----------"),
+    SETWARP_HELP_1("1. /setwarp <warp> - Set the world spawn to your position"),
+    SETWARP_HELP_2("2. /setwarp <delete|remove> <warp> - Remove warp"),
+    SETWARP_HELP_3("3. /setwarp help - Shows this menu"),
+    SETWARP_HELP_FOOTER("------------------------------------------"),
+    SETWARP_CREATED(PREFIX.getString() + "Successfully created warp \"%s\" at your position"),
+    SETWARP_CANT_CREATE(PREFIX.getString() + "The warp \"%s\" already exists!"),
+    SETWARP_DELETED(PREFIX.getString() + "Successfully deleted warp \"%s\"!"),
+    SETWARP_CANT_DELETE(PREFIX.getString() + "The warp \"%s\" doesn't exist!"),
+    SETWARP_NO_ARG(PREFIX.getString() + "You forgot the name of your new warp point")
     ;
 
 
