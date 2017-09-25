@@ -14,3 +14,4 @@ commands:
    setwarp:
    spawn:
    sudo:
+   system:

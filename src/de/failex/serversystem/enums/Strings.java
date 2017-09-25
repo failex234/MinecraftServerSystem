@@ -81,6 +81,8 @@ public enum Strings {
     SUDO_NOT_ALLOWED_TO_SUDO(PREFIX.getString() + "You're not allowed to sudo %s!"),
     SUDO_RUNNING(PREFIX.getString() + "Forcing %s to run %c..."),
     SUDO_PLAYER_NOT_ONLINE(PREFIX.getString() + "This player doesn't seem to be online!"),
+    SYSTEM_INFO(PREFIX.getString() + "v.%s by %a"),
+    SYSTEM_INFO_COMP_DATE(PREFIX.getString() + "Compiled on %s"),
     ;
 
 

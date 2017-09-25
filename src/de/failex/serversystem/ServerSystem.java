@@ -17,9 +17,9 @@ import java.util.UUID;
 public class ServerSystem extends JavaPlugin {
 
     //Get Plugin information from plugin.yml
-    private final String NAME = this.getDescription().getName();
-    private final String VERSION = this.getDescription().getVersion();
-    private final String AUTHOR = this.getDescription().getAuthors().get(0);
+    public final String NAME = this.getDescription().getName();
+    public final String VERSION = this.getDescription().getVersion();
+    public final String AUTHOR = this.getDescription().getAuthors().get(0);
 
     //Contains which player wants to teleport (requested to teleport) to another player
     public static HashMap<UUID, UUID> tpalist = new HashMap<>();
@@ -63,6 +63,7 @@ public class ServerSystem extends JavaPlugin {
         this.getCommand("setwarp").setExecutor(new CMD_setwarp());
         this.getCommand("spawn").setExecutor(new CMD_spawn());
         this.getCommand("sudo").setExecutor(new CMD_sudo());
+        this.getCommand("system").setExecutor(new CMD_system());
         this.getServer().getPluginManager().registerEvents(new Listeners(), this);
     }
 
