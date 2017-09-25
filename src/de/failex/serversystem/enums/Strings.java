@@ -83,6 +83,11 @@ public enum Strings {
     SUDO_PLAYER_NOT_ONLINE(PREFIX.getString() + "This player doesn't seem to be online!"),
     SYSTEM_INFO(PREFIX.getString() + "v.%s by %a"),
     SYSTEM_INFO_COMP_DATE(PREFIX.getString() + "Compiled on %s"),
+    TIME_USAGE(PREFIX.getString() + "Usage: /time <set|add|rem> <day/1200>"),
+    TIME_SET_TO(PREFIX.getString() + "Time in world %s set to %d"),
+    TIME_ADDED_TO(PREFIX.getString() + "Added %s ticks to time in world %w"),
+    TIME_REMOVED(PREFIX.getString() + "Removed %s ticks from time in world %w"),
+    TIME_WRONG_FORMAT(PREFIX.getString() + "This is a wrong time format!"),
     ;
 
 
