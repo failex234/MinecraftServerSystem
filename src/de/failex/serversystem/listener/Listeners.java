@@ -23,7 +23,7 @@ public class Listeners implements Listener {
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent e) {
-        //TODO Leave Message and more
+        //TODO Leave Message and more, remove frop TPA List
         ServerSystem.onlineplayers--;
     }
 

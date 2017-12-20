@@ -16,3 +16,6 @@ commands:
    sudo:
    system:
    time:
+   tp:
+   tpa:
+   tpaccept:

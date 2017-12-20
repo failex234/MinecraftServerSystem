@@ -49,6 +49,7 @@ public class ServerSystem extends JavaPlugin {
     public static ServerSystem system;
 
 
+    //TODO: Don't run certain commands as console / restrict usage so console can't run them
     @Override
     public void onEnable() {
         system = this;
@@ -65,6 +66,9 @@ public class ServerSystem extends JavaPlugin {
         this.getCommand("sudo").setExecutor(new CMD_sudo());
         this.getCommand("system").setExecutor(new CMD_system());
         this.getCommand("time").setExecutor(new CMD_time());
+        this.getCommand("tp").setExecutor(new CMD_tp());
+        this.getCommand("tpa").setExecutor(new CMD_tpa());
+        this.getCommand("tpaccept").setExecutor(new CMD_tpaccept());
         this.getServer().getPluginManager().registerEvents(new Listeners(), this);
     }
 
