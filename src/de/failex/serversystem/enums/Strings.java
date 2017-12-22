@@ -114,6 +114,11 @@ public enum Strings {
     WARP_AVAILABLE_WARPS(PREFIX.getString() + "Available warps: "),
     WARP_NOT_FOUND(PREFIX.getString() + "No such warp point!"),
     WARP_WARPED(PREFIX.getString() + "Warping to %s..."),
+    SKULL_DONE(PREFIX.getString() + "There you go!"),
+    SKULL_SENT_BY(PREFIX.getString() + "%s sent you a skull from %p!"),
+    SKULL_SENT_TO(PREFIX.getString() + "The skull of %p was sent to %s!"),
+    SKULL_NO_ARGS(PREFIX.getString() + "/skull <player> - get skull of player"),
+    SKULL_NO_ARGS2(PREFIX.getString() + "/skull <player> <target> - send skull of player to target"),
     ;
 
 
