@@ -30,7 +30,6 @@ public class CMD_tpa implements CommandExecutor {
             //Save both players in hash map and set destination as key for later
             ServerSystem.tpalist.put(destination.getUniqueId(), requester.getUniqueId());
             ServerSystem.tpatype.put(destination.getUniqueId(), "tpa");
-
             //Notify both players
             sender.sendMessage(Strings.TPA_SENDING.getString().replace("%s", destination.getName()));
             destination.sendMessage(Strings.TPA_NOTIFICATION_LINE1.getString().replace("%s", requester.getName()));

@@ -18,9 +18,14 @@ commands:
    system:
    time:
    tp:
+<<<<<<< HEAD
    tphere:
    tpa:
    tpahere:
    tpaccept:
    vanish:
    unvanish:
+=======
+   tpa:
+   tpaccept:
+>>>>>>> 91e8bae6aa69f66764161d254c5ac1ef888e9718
