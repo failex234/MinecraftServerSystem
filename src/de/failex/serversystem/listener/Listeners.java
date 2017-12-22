@@ -1,6 +1,7 @@
 package de.failex.serversystem.listener;
 
 import de.failex.serversystem.ServerSystem;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,13 +18,19 @@ public class Listeners implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         //TODO Join Messages + MOTD, vanish players in arraylist
-        //Vanish player on rejoin if not unvanished
+        if (ServerSystem.vanish.contains(e.getPlayer())) {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                if (!p.hasPermission("serversystem.vanish.bypass")) {
+                    p.hidePlayer(e.getPlayer());
+                }
+            }
+        }
         ServerSystem.onlineplayers++;
     }
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent e) {
-        //TODO Leave Message and more
+        //TODO Leave Message and more, remove frop TPA List
         ServerSystem.onlineplayers--;
     }
 

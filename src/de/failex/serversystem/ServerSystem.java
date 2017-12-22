@@ -23,6 +23,7 @@ public class ServerSystem extends JavaPlugin {
 
     //Contains which player wants to teleport (requested to teleport) to another player
     public static HashMap<UUID, UUID> tpalist = new HashMap<>();
+    public static HashMap<UUID, String> tpatype = new HashMap<>();
 
     //Contains every vanished player
     public static ArrayList<Player> vanish = new ArrayList<>();
@@ -49,6 +50,7 @@ public class ServerSystem extends JavaPlugin {
     public static ServerSystem system;
 
 
+    //TODO: Don't run certain commands as console / restrict usage so console can't run them
     @Override
     public void onEnable() {
         system = this;
@@ -65,6 +67,12 @@ public class ServerSystem extends JavaPlugin {
         this.getCommand("sudo").setExecutor(new CMD_sudo());
         this.getCommand("system").setExecutor(new CMD_system());
         this.getCommand("time").setExecutor(new CMD_time());
+        this.getCommand("tp").setExecutor(new CMD_tp());
+        this.getCommand("tphere").setExecutor(new CMD_tphere());
+        this.getCommand("tpa").setExecutor(new CMD_tpa());
+        this.getCommand("tpahere").setExecutor(new CMD_tpahere());
+        this.getCommand("tpaccept").setExecutor(new CMD_tpaccept());
+        this.getCommand("vanish").setExecutor(new CMD_vanish());
         this.getServer().getPluginManager().registerEvents(new Listeners(), this);
     }
 

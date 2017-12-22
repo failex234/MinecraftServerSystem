@@ -1,5 +1,5 @@
 name: ServerSystem
-version: 0.1b
+version: 0.4b
 author: failex234
 url: failex.de
 main: de.failex.serversystem.ServerSystem
@@ -16,3 +16,9 @@ commands:
    sudo:
    system:
    time:
+   tp:
+   tphere:
+   tpa:
+   tpahere:
+   tpaccept:
+   vanish:

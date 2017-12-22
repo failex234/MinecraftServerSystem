@@ -69,10 +69,10 @@ public class CMD_gamemode implements CommandExecutor {
                     if (gamemode.startsWith("su")) {
                         p.setGameMode(GameMode.SURVIVAL);
                         p.sendMessage(Strings.GAMEMODE_SET_TO.getString().replace("%s", "Survival"));
-                    } else if (gamemode.startsWith("cr")) {
+                    } else if (gamemode.startsWith("c")) {
                         p.setGameMode(GameMode.CREATIVE);
                         p.sendMessage(Strings.GAMEMODE_SET_TO.getString().replace("%s", "Creative"));
-                    } else if (gamemode.startsWith("ad")) {
+                    } else if (gamemode.startsWith("a")) {
                         p.setGameMode(GameMode.ADVENTURE);
                         p.sendMessage(Strings.GAMEMODE_SET_TO.getString().replace("%s", "Adventure"));
                     } else if (gamemode.startsWith("sp")) {

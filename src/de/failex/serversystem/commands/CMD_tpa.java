@@ -1,4 +1,45 @@
 package de.failex.serversystem.commands;
 
-public class CMD_tpa {
+import de.failex.serversystem.ServerSystem;
+import de.failex.serversystem.enums.Strings;
+import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+/**
+ * Teleport request to another player
+ */
+public class CMD_tpa implements CommandExecutor {
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
+        if (args.length > 0) {
+            //Get wanted player
+            Player destination = Bukkit.getPlayer(args[0]);
+
+            //Check if player exists
+            if (destination == null) {
+                sender.sendMessage(Strings.TP_PLAYER_NOT_FOUND.getString());
+                return false;
+            }
+
+            //Get sender
+            Player requester = (Player) sender;
+
+            //Save both players in hash map and set destination as key for later
+            ServerSystem.tpalist.put(destination.getUniqueId(), requester.getUniqueId());
+            ServerSystem.tpatype.put(destination.getUniqueId(), "tpa");
+
+            //Notify both players
+            sender.sendMessage(Strings.TPA_SENDING.getString().replace("%s", destination.getName()));
+            destination.sendMessage(Strings.TPA_NOTIFICATION_LINE1.getString().replace("%s", requester.getName()));
+
+            return true;
+
+        } else {
+            sender.sendMessage(Strings.TPA_NO_NAME_GIVEN.getString());
+            return false;
+        }
+    }
 }
