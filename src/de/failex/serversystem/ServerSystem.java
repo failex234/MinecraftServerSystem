@@ -61,9 +61,10 @@ public class ServerSystem extends JavaPlugin {
         this.getCommand("ping").setExecutor(new CMD_ping());
         this.getCommand("home").setExecutor(new CMD_home());
         this.getCommand("sethome").setExecutor(new CMD_sethome());
-        this.getCommand("setspawn").setExecutor(new CMD_setspawn());
-        this.getCommand("setwarp").setExecutor(new CMD_setwarp());
         this.getCommand("spawn").setExecutor(new CMD_spawn());
+        this.getCommand("setspawn").setExecutor(new CMD_setspawn());
+        this.getCommand("warp").setExecutor(new CMD_warp());
+        this.getCommand("setwarp").setExecutor(new CMD_setwarp());
         this.getCommand("sudo").setExecutor(new CMD_sudo());
         this.getCommand("system").setExecutor(new CMD_system());
         this.getCommand("time").setExecutor(new CMD_time());
@@ -73,6 +74,7 @@ public class ServerSystem extends JavaPlugin {
         this.getCommand("tpahere").setExecutor(new CMD_tpahere());
         this.getCommand("tpaccept").setExecutor(new CMD_tpaccept());
         this.getCommand("vanish").setExecutor(new CMD_vanish());
+        this.getCommand("unvanish").setExecutor(new CMD_unvanish());
         this.getServer().getPluginManager().registerEvents(new Listeners(), this);
     }
 

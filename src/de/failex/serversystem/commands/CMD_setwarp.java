@@ -67,6 +67,9 @@ public class CMD_setwarp implements CommandExecutor {
                             ConfigManager.set(p.getWorld().getName() + "." + warp.toLowerCase() + ".yaw", yaw + "");
                             ConfigManager.set("warps." + warp.toLowerCase() + ".world", p.getWorld().getName());
 
+                            //Save warp name to list to fetch all names later
+                            ConfigManager.set("warps.allwarps", ConfigManager.get("warps.allwarps") + " " + warp.toLowerCase());
+
                             //Notify user
                             p.sendMessage(Strings.SETWARP_CREATED.getString().replace("%s", warp));
 

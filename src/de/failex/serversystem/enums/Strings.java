@@ -110,6 +110,10 @@ public enum Strings {
     VANISH_ALREADY_VANISHED(PREFIX.getString() + "You're already vanished!"),
     VANISH_NOT_VANISHED(PREFIX.getString() + "You're not vanished!"),
     VAHISH_UNVANISHED(PREFIX.getString() + "You're now visible again!"),
+    WARP_NO_WARP_SET(PREFIX.getString() + "No warp points found"),
+    WARP_AVAILABLE_WARPS(PREFIX.getString() + "Available warps: "),
+    WARP_NOT_FOUND(PREFIX.getString() + "No such warp point!"),
+    WARP_WARPED(PREFIX.getString() + "Warping to %s..."),
     ;
 
 
