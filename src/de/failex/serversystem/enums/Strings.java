@@ -109,6 +109,7 @@ public enum Strings {
     VANISH_NOW_VANISHED(PREFIX.getString() + "You're now vanished. Poof!"),
     VANISH_ALREADY_VANISHED(PREFIX.getString() + "You're already vanished!"),
     VANISH_NOT_VANISHED(PREFIX.getString() + "You're not vanished!"),
+    VAHISH_UNVANISHED(PREFIX.getString() + "You're now visible again!"),
     ;
 
 

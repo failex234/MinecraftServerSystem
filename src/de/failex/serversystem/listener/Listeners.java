@@ -20,7 +20,7 @@ public class Listeners implements Listener {
         //TODO Join Messages + MOTD, vanish players in arraylist
         if (ServerSystem.vanish.contains(e.getPlayer())) {
             for (Player p : Bukkit.getOnlinePlayers()) {
-                if (!p.hasPermission("serversystem.vanish.bypass")) {
+                if (!p.hasPermission("serversystem.vanish.bypass") & p != e.getPlayer()) {
                     p.hidePlayer(e.getPlayer());
                 }
             }

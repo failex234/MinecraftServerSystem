@@ -23,9 +23,15 @@ public class CMD_vanish implements CommandExecutor {
         if (sender.hasPermission("serversystem.vanish")) {
             Player current = (Player) sender;
 
+            //Check if player is already vanished
+            if (ServerSystem.vanish.contains(current)) {
+                current.sendMessage(Strings.VANISH_ALREADY_VANISHED.getString());
+                return false;
+            }
+
             //Hide current play for all players that don't have bypass permissions
             for (Player p : Bukkit.getOnlinePlayers()) {
-                if (!p.hasPermission("serversystem.vanish.bypass")) p.hidePlayer(current);
+                if (!p.hasPermission("serversystem.vanish.bypass") && p != current) p.hidePlayer(current);
             }
             //Add player to arraylist so he's vanished across relogs
             ServerSystem.vanish.add(current);
