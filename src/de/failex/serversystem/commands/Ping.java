@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 /**
@@ -17,12 +17,12 @@ import org.bukkit.entity.Player;
  * </p>
  */
 //TODO Rework is needed to struture this command like the others!
-public class CMD_ping implements CommandExecutor {
+public class Ping implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         if (sender instanceof Player) {
             if (args.length == 0) {
-                sender.sendMessage(Strings.PING_NOTICE.getString().replace("%d",((CraftPlayer) sender).getHandle().ping + ""));
+                sender.sendMessage(String.format(Strings.PING_NOTICE.getString(),((CraftPlayer) sender).getHandle().ping));
             } else if (args[0].equals("help")) {
                 if (sender.hasPermission("serversystem.ping.other")) {
                     sender.sendMessage(Strings.PING_HELP_TITLE.getString());
@@ -40,9 +40,9 @@ public class CMD_ping implements CommandExecutor {
                 if (sender.hasPermission("serversystem.ping.other")) {
                     Player p;
                     p = Bukkit.getServer().getPlayer(args[0]);
-                    sender.sendMessage(Strings.PING_NOTICE_OTHER.getString().replace("%s", args[0]).replace("%d",((CraftPlayer) p).getHandle().ping + ""));
+                    sender.sendMessage(String.format(Strings.PING_NOTICE_OTHER.getString(), args[0],((CraftPlayer) p).getHandle().ping));
                 } else {
-                    sender.sendMessage(Strings.PING_NOTICE.getString().replace("%d",((CraftPlayer) sender).getHandle().ping + ""));
+                    sender.sendMessage(String.format(Strings.PING_NOTICE.getString(),((CraftPlayer) sender).getHandle().ping));
                 }
             }
         } else {
@@ -58,7 +58,7 @@ public class CMD_ping implements CommandExecutor {
                 } else {
                     CraftPlayer cp = (CraftPlayer) Bukkit.getServer().getPlayer(args[0]);
                     int ping = cp.getHandle().ping;
-                    sender.sendMessage(Strings.PING_NOTICE_OTHER.getString().replace("%s", args[0]).replace("%d", ping + ""));
+                    sender.sendMessage(String.format(Strings.PING_NOTICE_OTHER.getString(), args[0], ping));
                 }
             }
         }

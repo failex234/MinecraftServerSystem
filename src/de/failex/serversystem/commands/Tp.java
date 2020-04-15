@@ -18,7 +18,7 @@ import org.bukkit.entity.Player;
  *     - serversystem.tp.other
  * </p>
  */
-public class CMD_tp implements CommandExecutor {
+public class Tp implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
@@ -65,7 +65,7 @@ public class CMD_tp implements CommandExecutor {
                         a.teleport(b);
 
                         //Notify sender
-                        sender.sendMessage(Strings.TP_TELEPORTING_A_TO_B.getString().replace("%a", a.getName()).replace("%b", b.getName()));
+                        sender.sendMessage(String.format(Strings.TP_TELEPORTING_A_TO_B.getString(), a.getName(), b.getName()));
                         return true;
                 }
             }

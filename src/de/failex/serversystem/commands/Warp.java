@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 /**
  * Teleports a player to a warp point / shows all available warps
  */
-public class CMD_warp implements CommandExecutor {
+public class Warp implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
@@ -57,7 +57,7 @@ public class CMD_warp implements CommandExecutor {
             current.teleport(warp);
 
             //Notify player
-            current.sendMessage(Strings.WARP_WARPED.getString().replace("%s", args[0].toLowerCase()));
+            current.sendMessage(String.format(Strings.WARP_WARPED.getString(), args[0].toLowerCase()));
 
             return true;
         }

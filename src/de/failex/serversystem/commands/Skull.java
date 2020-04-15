@@ -20,14 +20,14 @@ import org.bukkit.inventory.meta.SkullMeta;
  * - serversystem.skull.other
  * </p>
  */
-public class CMD_skull implements CommandExecutor {
+public class Skull implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         if (sender.hasPermission("serversystem.skull")) {
             switch (args.length) {
                 case 1:
                     //Create a new skull and edit meta to set skull owner
-                    ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
+                    ItemStack head = new ItemStack(Material.LEGACY_SKULL_ITEM, (byte) 3);
                     SkullMeta head_meta = (SkullMeta) head.getItemMeta();
                     head_meta.setOwner(args[0]);
                     head.setItemMeta(head_meta);
@@ -50,15 +50,15 @@ public class CMD_skull implements CommandExecutor {
                         }
 
                         //Create a new skull and edit meta to set skull owner
-                        ItemStack head_other = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
+                        ItemStack head_other = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (byte) 3);
                         SkullMeta head_other_meta = (SkullMeta) head_other.getItemMeta();
                         head_other_meta.setOwner(playername);
                         head_other.setItemMeta(head_other_meta);
 
                         //Give item and notify players
                         target.getInventory().addItem(head_other);
-                        target.sendMessage(Strings.SKULL_SENT_BY.getString().replace("%s", sender.getName()).replace("%p", playername));
-                        sender.sendMessage(Strings.SKULL_SENT_TO.getString().replace("%p", playername).replace("%s", target.getName()));
+                        target.sendMessage(String.format(Strings.SKULL_SENT_BY.getString(), sender.getName(), playername));
+                        sender.sendMessage(String.format(Strings.SKULL_SENT_TO.getString(), playername, target.getName()));
 
                         return true;
                     } else {

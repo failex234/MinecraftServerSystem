@@ -18,14 +18,14 @@ import java.util.Date;
  *     - serversystem.system
  * </p>
  */
-public class CMD_system implements CommandExecutor {
+public class System implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         if (sender.hasPermission("serversystem.system")) {
             try {
-                sender.sendMessage(Strings.SYSTEM_INFO.getString().replace("%s", ServerSystem.system.VERSION).replace("%a", ServerSystem.system.AUTHOR));
+                sender.sendMessage(String.format(Strings.SYSTEM_INFO.getString(), ServerSystem.system.VERSION, ServerSystem.system.AUTHOR));
                 Date compdate = new Date(new File(getClass().getClassLoader().getResource(getClass().getCanonicalName().replace('.', '/') + ".class").toURI()).lastModified());
-                sender.sendMessage(Strings.SYSTEM_INFO_COMP_DATE.getString().replace("%s", compdate.toString()));
+                sender.sendMessage(String.format(Strings.SYSTEM_INFO_COMP_DATE.getString(), compdate.toString()));
                 return true;
             } catch (URISyntaxException | NullPointerException e) {
                 e.printStackTrace();

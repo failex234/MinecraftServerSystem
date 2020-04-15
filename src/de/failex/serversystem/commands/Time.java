@@ -15,7 +15,7 @@ import org.bukkit.entity.Player;
  * - serversystem.time
  * </p>
  */
-public class CMD_time implements CommandExecutor {
+public class Time implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         if (sender.hasPermission("serversystem.time")) {
@@ -43,7 +43,7 @@ public class CMD_time implements CommandExecutor {
                                 ticks = Integer.parseInt(args[1]);
                                 World currworld = p.getWorld();
                                 currworld.setTime(ticks);
-                                sender.sendMessage(Strings.TIME_SET_TO.getString().replace("%s", "" + ticks).replace("%w", currworld.getName()));
+                                sender.sendMessage(String.format(Strings.TIME_SET_TO.getString(), currworld.getName(), "" + ticks));
                                 return true;
                             }
                             //TODO: Adjust time
@@ -51,11 +51,11 @@ public class CMD_time implements CommandExecutor {
                                 switch (args[1]) {
                                     case "day":
                                         p.getWorld().setTime(12000);
-                                        p.sendMessage(Strings.TIME_SET_TO.getString().replace("%s", "daylight").replace("%w", p.getWorld().getName()));
+                                        p.sendMessage(String.format(Strings.TIME_SET_TO.getString(), p.getWorld().getName(), "daylight"));
                                         return true;
                                     case "night":
                                         p.getWorld().setTime(20000);
-                                        p.sendMessage(Strings.TIME_SET_TO.getString().replace("%s", "nighttime").replace("%w", p.getWorld().getName()));
+                                        p.sendMessage(String.format(Strings.TIME_SET_TO.getString(), p.getWorld().getName(), "nighttime"));
                                         return true;
                                     default:
                                         p.sendMessage(Strings.TIME_WRONG_FORMAT.getString());
@@ -76,7 +76,7 @@ public class CMD_time implements CommandExecutor {
                                 long currworldticks = p.getWorld().getTime();
                                 long newticks = currworldticks + ticks;
                                 p.getWorld().setTime(newticks);
-                                p.sendMessage(Strings.TIME_ADDED_TO.getString().replace("%s", ticks + "").replace("%w", p.getWorld().getName()));
+                                p.sendMessage(String.format(Strings.TIME_ADDED_TO.getString(), p.getWorld().getName(), "" + ticks));
                                 return true;
                             } catch (NumberFormatException e) {
                                 sender.sendMessage(Strings.TIME_WRONG_FORMAT.getString());
@@ -96,11 +96,11 @@ public class CMD_time implements CommandExecutor {
                                 long newticks = currworldticks - ticks;
                                 if (newticks < 0) {
                                     p.getWorld().setTime(0);
-                                    p.sendMessage(Strings.TIME_REMOVED.getString().replace("%s", ticks + "").replace("%w", p.getWorld().getName()));
+                                    p.sendMessage(String.format(Strings.TIME_REMOVED.getString(), p.getWorld().getName(), ticks + ""));
                                     return true;
                                 } else {
                                     p.getWorld().setTime(newticks);
-                                    p.sendMessage(Strings.TIME_REMOVED.getString().replace("%s", ticks + "").replace("%w", p.getWorld().getName()));
+                                    p.sendMessage(String.format(Strings.TIME_REMOVED.getString(), p.getWorld().getName(), ticks + ""));
                                     return true;
                                 }
                             } catch (NumberFormatException e) {
@@ -109,7 +109,7 @@ public class CMD_time implements CommandExecutor {
                             }
                         default:
                             p.sendMessage(Strings.ARG_UNREC.getString());
-                            p.sendMessage(Strings.TRY_HELP.getString().replace("%s", "time"));
+                            p.sendMessage(String.format(Strings.TRY_HELP.getString(), "time"));
                             return false;
                     }
                 }

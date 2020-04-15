@@ -1,7 +1,7 @@
 name: ServerSystem
-version: 0.4b
+version: 0.5b
 author: failex234
-url: failex.de
+url: felixnaumann.me
 main: de.failex.serversystem.ServerSystem
 commands:
    alwaysday:
@@ -9,6 +9,9 @@ commands:
    online:
    ping:
    home:
+   msg:
+   r:
+   reply:
    sethome:
    spawn:
    setspawn:

@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
  * Teleports player to the spawn
  */
 //TODO: Exception Catcher, maybe config is changed and Integer and Float can't parse that, maybe help menu stub
-public class CMD_spawn implements CommandExecutor {
+public class Spawn implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         //Check if sender is a player

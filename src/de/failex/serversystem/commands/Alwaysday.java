@@ -19,7 +19,7 @@ import org.bukkit.entity.Player;
  * </p>
  */
 //TODO Write BukkitTask for alwaysday
-public class CMD_alwaysday implements CommandExecutor {
+public class Alwaysday implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         //Only execute if player has the right permission or else show the unknown command message
@@ -30,11 +30,11 @@ public class CMD_alwaysday implements CommandExecutor {
                 World current = p.getWorld();
                 if (ServerSystem.alwaysday.contains(current)) {
                     ServerSystem.alwaysday.remove(current);
-                    p.sendMessage(Strings.ALWAYSDAY_DISABLED.getString().replace("%s", current.getName()));
+                    p.sendMessage(String.format(Strings.ALWAYSDAY_DISABLED.getString(), current.getName()));
                 } else {
                     ServerSystem.alwaysday.add(current);
                     ServerSystem.alwaysday.add(current);
-                    p.sendMessage(Strings.ALWAYSDAY_ENABLED.getString().replace("%s", current.getName()));
+                    p.sendMessage(String.format(Strings.ALWAYSDAY_ENABLED.getString(), current.getName()));
                 }
             } else {
                 String status = args[0];
@@ -42,16 +42,16 @@ public class CMD_alwaysday implements CommandExecutor {
                 if (status.equals("0") || status.equals("off") || status.equals("false") || status.equals("stop")) {
                     if (ServerSystem.alwaysday.contains(p.getWorld())) {
                         ServerSystem.stopAlwaysDay(p.getWorld());
-                        p.sendMessage(Strings.ALWAYSDAY_DISABLED.getString().replace("%s", p.getWorld().getName()));
+                        p.sendMessage(String.format(Strings.ALWAYSDAY_DISABLED.getString(), p.getWorld().getName()));
                     } else {
-                        p.sendMessage(Strings.ALWAYSDAY_ALREADY_DISABLED.getString().replace("%s", p.getWorld().getName()));
+                        p.sendMessage(String.format(Strings.ALWAYSDAY_ALREADY_DISABLED.getString(), p.getWorld().getName()));
                     }
                 } else if (status.equals("1") || status.equals("on") || status.equals("true") || status.equals("start")) {
                     if (ServerSystem.alwaysday.contains(p.getWorld())) {
-                        p.sendMessage(Strings.ALWAYSDAY_ALREADY_ENABLED.getString().replace("%s", p.getWorld().getName()));
+                        p.sendMessage(String.format(Strings.ALWAYSDAY_ALREADY_ENABLED.getString(), p.getWorld().getName()));
                     } else {
                         ServerSystem.alwaysday.add(p.getWorld());
-                        p.sendMessage(Strings.ALWAYSDAY_ENABLED.getString().replace("%s", p.getWorld().getName()));
+                        p.sendMessage(String.format(Strings.ALWAYSDAY_ENABLED.getString(), p.getWorld().getName()));
                     }
                 } else if (args[0].equals("help")) {
                     p.sendMessage(Strings.ALWAYSDAY_HELP_1.getString());
@@ -61,7 +61,7 @@ public class CMD_alwaysday implements CommandExecutor {
                     p.sendMessage(Strings.ALWAYSDAY_HELP_5.getString());
                 } else {
                     p.sendMessage(Strings.ARG_UNREC.getString());
-                    p.sendMessage(Strings.TRY_HELP.getString().replace("%s", "alwaysday"));
+                    p.sendMessage(String.format(Strings.TRY_HELP.getString(), "alwaysday"));
                 }
             }
         } else {

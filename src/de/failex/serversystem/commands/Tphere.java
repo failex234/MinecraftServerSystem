@@ -15,7 +15,7 @@ import org.bukkit.entity.Player;
  *     - serversystem.tphere
  * </p>
  */
-public class CMD_tphere implements CommandExecutor {
+public class Tphere implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         if (sender.hasPermission("serversystem.tphere")) {

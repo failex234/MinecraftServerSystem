@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 /**
  * Sets the home point of a player
  */
-public class CMD_sethome implements CommandExecutor {
+public class Sethome implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         //Check if command sender is a player
@@ -37,18 +37,16 @@ public class CMD_sethome implements CommandExecutor {
                 return true;
             } else {
                 //Show help menu
-                switch (args[0]) {
-                    case "help":
-                        sender.sendMessage(Strings.SETHOME_HELP_TITLE.getString());
-                        sender.sendMessage(Strings.SETHOME_HELP_1.getString());
-                        sender.sendMessage(Strings.SETHOME_HELP_2.getString());
-                        sender.sendMessage(Strings.SETHOME_HELP_FOOTER.getString());
-                        return true;
-                    default:
-                        sender.sendMessage(Strings.ARG_UNREC.getString());
-                        sender.sendMessage(Strings.TRY_HELP.getString().replace("%s", "sethome"));
-                        return true;
+                if (args[0].equals("help")) {
+                    sender.sendMessage(Strings.SETHOME_HELP_TITLE.getString());
+                    sender.sendMessage(Strings.SETHOME_HELP_1.getString());
+                    sender.sendMessage(Strings.SETHOME_HELP_2.getString());
+                    sender.sendMessage(Strings.SETHOME_HELP_FOOTER.getString());
+                    return true;
                 }
+                sender.sendMessage(Strings.ARG_UNREC.getString());
+                sender.sendMessage(String.format(Strings.TRY_HELP.getString(), "sethome"));
+                return true;
             }
         } else {
             sender.sendMessage(Strings.ONLY_PLAYER_COMMAND.getString());

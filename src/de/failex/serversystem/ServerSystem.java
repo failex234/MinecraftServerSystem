@@ -1,6 +1,7 @@
 package de.failex.serversystem;
 
 import de.failex.serversystem.commands.*;
+import de.failex.serversystem.commands.System;
 import de.failex.serversystem.enums.Strings;
 import de.failex.serversystem.listener.Listeners;
 import org.bukkit.World;
@@ -25,11 +26,14 @@ public class ServerSystem extends JavaPlugin {
     public static HashMap<UUID, UUID> tpalist = new HashMap<>();
     public static HashMap<UUID, String> tpatype = new HashMap<>();
 
+    //Contains the last sender of a private message to make the reply command work
+    public static HashMap<UUID, UUID> lastmsg = new HashMap<>();
+
     //Contains every vanished player
     public static ArrayList<Player> vanish = new ArrayList<>();
 
     //Contains every command that should not get executed by a normal player
-    public ArrayList<String> unwantedcmds = new ArrayList<>();
+    public static ArrayList<String> unwantedcmds = new ArrayList<>();
 
     //Contains every world where the daytime should not change
     public static ArrayList<World> alwaysday = new ArrayList<>();
@@ -54,38 +58,41 @@ public class ServerSystem extends JavaPlugin {
     @Override
     public void onEnable() {
         system = this;
-        System.out.println("[" + NAME + "] Version " + VERSION + " by " + AUTHOR + " successfully enabled!");
-        this.getCommand("alwaysday").setExecutor(new CMD_alwaysday());
-        this.getCommand("gamemode").setExecutor(new CMD_gamemode());
-        this.getCommand("online").setExecutor(new CMD_online());
-        this.getCommand("ping").setExecutor(new CMD_ping());
-        this.getCommand("home").setExecutor(new CMD_home());
-        this.getCommand("sethome").setExecutor(new CMD_sethome());
-        this.getCommand("spawn").setExecutor(new CMD_spawn());
-        this.getCommand("setspawn").setExecutor(new CMD_setspawn());
-        this.getCommand("warp").setExecutor(new CMD_warp());
-        this.getCommand("setwarp").setExecutor(new CMD_setwarp());
-        this.getCommand("sudo").setExecutor(new CMD_sudo());
-        this.getCommand("system").setExecutor(new CMD_system());
-        this.getCommand("time").setExecutor(new CMD_time());
-        this.getCommand("tp").setExecutor(new CMD_tp());
-        this.getCommand("tphere").setExecutor(new CMD_tphere());
-        this.getCommand("tpa").setExecutor(new CMD_tpa());
-        this.getCommand("tpahere").setExecutor(new CMD_tpahere());
-        this.getCommand("tpaccept").setExecutor(new CMD_tpaccept());
-        this.getCommand("vanish").setExecutor(new CMD_vanish());
-        this.getCommand("unvanish").setExecutor(new CMD_unvanish());
+        java.lang.System.out.println("[" + NAME + "] Version " + VERSION + " by " + AUTHOR + " successfully enabled!");
+        this.getCommand("alwaysday").setExecutor(new Alwaysday());
+        this.getCommand("gamemode").setExecutor(new Gamemode());
+        this.getCommand("online").setExecutor(new Online());
+        this.getCommand("ping").setExecutor(new Ping());
+        this.getCommand("home").setExecutor(new Home());
+        this.getCommand("msg").setExecutor(new Msg());
+        this.getCommand("r").setExecutor(new Reply());
+        this.getCommand("reply").setExecutor(new Reply());
+        this.getCommand("sethome").setExecutor(new Sethome());
+        this.getCommand("spawn").setExecutor(new Spawn());
+        this.getCommand("setspawn").setExecutor(new Setspawn());
+        this.getCommand("warp").setExecutor(new Warp());
+        this.getCommand("setwarp").setExecutor(new Setwarp());
+        this.getCommand("sudo").setExecutor(new Sudo());
+        this.getCommand("system").setExecutor(new System());
+        this.getCommand("time").setExecutor(new Time());
+        this.getCommand("tp").setExecutor(new Tp());
+        this.getCommand("tphere").setExecutor(new Tphere());
+        this.getCommand("tpa").setExecutor(new Tpa());
+        this.getCommand("tpahere").setExecutor(new Tpahere());
+        this.getCommand("tpaccept").setExecutor(new Tpaccept());
+        this.getCommand("vanish").setExecutor(new Vanish());
+        this.getCommand("unvanish").setExecutor(new Unvanish());
         this.getServer().getPluginManager().registerEvents(new Listeners(), this);
     }
 
     @Override
     public void onDisable() {
-        System.out.println("[" + NAME + "] Version " + VERSION + " by " + AUTHOR + " disabled!");
+        java.lang.System.out.println("[" + NAME + "] Version " + VERSION + " by " + AUTHOR + " disabled!");
     }
 
     //Send player a message that the typed command is invalid / unknown
     public static void onUnknownCommand(Player p, String cmd) {
-        p.sendMessage(Strings.UNKNOWN_COMMAND.getString().replace("%s", cmd));
+        p.sendMessage(String.format(Strings.UNKNOWN_COMMAND.getString(), cmd));
     }
 
     public static void stopAlwaysDay(World w) {

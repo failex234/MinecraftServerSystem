@@ -15,7 +15,7 @@ import org.bukkit.entity.Player;
  *      - serversystem.sudo
  * </p>
  */
-public class CMD_sudo implements CommandExecutor {
+public class Sudo implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         //Check if user is permitted to run command
@@ -45,7 +45,7 @@ public class CMD_sudo implements CommandExecutor {
 
                         //Test if sudo'd user doesn't have the permission serversystem.sudo
                         if (sudo.hasPermission("serversystem.sudo")) {
-                            sender.sendMessage(Strings.SUDO_NOT_ALLOWED_TO_SUDO.getString().replace("%s", sudo.getName()));
+                            sender.sendMessage(String.format(Strings.SUDO_NOT_ALLOWED_TO_SUDO.getString(), sudo.getName()));
                             return false;
                         }
 
@@ -58,7 +58,7 @@ public class CMD_sudo implements CommandExecutor {
                         }
 
                         //Notifying player
-                        sender.sendMessage(Strings.SUDO_RUNNING.getString().replace("%s", sudo.getName()).replace("%c", command));
+                        sender.sendMessage(String.format(Strings.SUDO_RUNNING.getString(), sudo.getName(), command));
 
                         //Run command as other user
                         sudo.performCommand(command.toString());

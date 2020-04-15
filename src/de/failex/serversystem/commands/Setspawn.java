@@ -17,7 +17,7 @@ import org.bukkit.entity.Player;
  *      - serversystem.setspawn
  * </p>
  */
-public class CMD_setspawn implements CommandExecutor {
+public class Setspawn implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         if (sender.hasPermission("serversystem.setspawn")) {
@@ -61,7 +61,7 @@ public class CMD_setspawn implements CommandExecutor {
                             return true;
                         default:
                             sender.sendMessage(Strings.ARG_UNREC.getString());
-                            sender.sendMessage(Strings.TRY_HELP.getString().replace("%s", "setspawn"));
+                            sender.sendMessage(String.format(Strings.TRY_HELP.getString(), "setspawn"));
                             return false;
                     }
                 }

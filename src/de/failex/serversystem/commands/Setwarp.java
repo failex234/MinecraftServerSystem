@@ -16,7 +16,7 @@ import org.bukkit.entity.Player;
  *     - serversystem.setwarp
  * </p>
  */
-public class CMD_setwarp implements CommandExecutor {
+public class Setwarp implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         if (sender.hasPermission("serversystem.setwarp")) {
@@ -71,11 +71,11 @@ public class CMD_setwarp implements CommandExecutor {
                             ConfigManager.set("warps.allwarps", ConfigManager.get("warps.allwarps") + " " + warp.toLowerCase());
 
                             //Notify user
-                            p.sendMessage(Strings.SETWARP_CREATED.getString().replace("%s", warp));
+                            p.sendMessage(String.format(Strings.SETWARP_CREATED.getString(), warp));
 
                             return true;
                         } else {
-                            p.sendMessage(Strings.SETWARP_CANT_CREATE.getString().replace("%s", warp));
+                            p.sendMessage(String.format(Strings.SETWARP_CANT_CREATE.getString(), warp));
 
                             return false;
                         }
@@ -93,7 +93,7 @@ public class CMD_setwarp implements CommandExecutor {
         String world = ConfigManager.get("warps." + warp.toLowerCase() + ".world");
         if (world == null) {
             //Notify player
-            p.sendMessage(Strings.SETWARP_CANT_DELETE.getString().replace("%s", warp));
+            p.sendMessage(String.format(Strings.SETWARP_CANT_DELETE.getString(), warp));
         } else {
             //Set all entries to null
             ConfigManager.set("warps." + warp.toLowerCase() + ".world", null);
@@ -104,7 +104,7 @@ public class CMD_setwarp implements CommandExecutor {
             ConfigManager.set(world + "." + warp.toLowerCase() + ".yaw", null);
 
             //Notify player
-            p.sendMessage(Strings.SETWARP_DELETED.getString().replace("%s", warp));
+            p.sendMessage(String.format(Strings.SETWARP_DELETED.getString(), warp));
         }
     }
 }

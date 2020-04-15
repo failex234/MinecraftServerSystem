@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 /**
  * Denies a teleport request
  */
-public class CMD_tpdeny implements CommandExecutor {
+public class Tpdeny implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         //Get current player
@@ -25,7 +25,7 @@ public class CMD_tpdeny implements CommandExecutor {
             ServerSystem.tpatype.remove(current.getUniqueId());
 
             current.sendMessage(Strings.TPA_DECLINED_SENDER.getString());
-            requester.sendMessage(Strings.TPA_DECLINED_REQUESTER.getString().replace("%s", current.getName()));
+            requester.sendMessage(String.format(Strings.TPA_DECLINED_REQUESTER.getString(), current.getName()));
 
             return true;
         } else {

@@ -9,37 +9,37 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 /**
- * Unvanishes a vanished player
+ * Makes a player invisible
  * <p>
  *     Permissions:
  *     - serversystem.vanish
+ *     - serversystem.vanish.bypass
  * </p>
  */
-public class CMD_unvanish implements CommandExecutor {
+//TODO: Hide Player in every playerlist
+public class Vanish implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         if (sender.hasPermission("serversystem.vanish")) {
             Player current = (Player) sender;
 
-            //Check if player is vanished
-            if (!ServerSystem.vanish.contains(current)) {
-                current.sendMessage(Strings.VANISH_NOT_VANISHED.getString());
+            //Check if player is already vanished
+            if (ServerSystem.vanish.contains(current)) {
+                current.sendMessage(Strings.VANISH_ALREADY_VANISHED.getString());
                 return false;
             }
 
-            //Remove player from vanish arraylist
-            ServerSystem.vanish.remove(current);
-
-            //Make player visible again
+            //Hide current play for all players that don't have bypass permissions
             for (Player p : Bukkit.getOnlinePlayers()) {
-                if (p != current) p.showPlayer(current);
+                if (!p.hasPermission("serversystem.vanish.bypass") && p != current) p.hidePlayer(current);
             }
+            //Add player to arraylist so he's vanished across relogs
+            ServerSystem.vanish.add(current);
+            current.sendMessage(Strings.VANISH_NOW_VANISHED.getString());
 
-            //Notify player
-            current.sendMessage(Strings.VAHISH_UNVANISHED.getString());
             return true;
         } else {
-            ServerSystem.onUnknownCommand((Player) sender, "unvanish");
+            ServerSystem.onUnknownCommand((Player) sender, "vanish");
             return false;
         }
     }

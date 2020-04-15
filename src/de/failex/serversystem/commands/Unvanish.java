@@ -9,37 +9,37 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 /**
- * Makes a player invisible
+ * Unvanishes a vanished player
  * <p>
  *     Permissions:
  *     - serversystem.vanish
- *     - serversystem.vanish.bypass
  * </p>
  */
-//TODO: Hide Player in every playerlist
-public class CMD_vanish implements CommandExecutor {
+public class Unvanish implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         if (sender.hasPermission("serversystem.vanish")) {
             Player current = (Player) sender;
 
-            //Check if player is already vanished
-            if (ServerSystem.vanish.contains(current)) {
-                current.sendMessage(Strings.VANISH_ALREADY_VANISHED.getString());
+            //Check if player is vanished
+            if (!ServerSystem.vanish.contains(current)) {
+                current.sendMessage(Strings.VANISH_NOT_VANISHED.getString());
                 return false;
             }
 
-            //Hide current play for all players that don't have bypass permissions
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                if (!p.hasPermission("serversystem.vanish.bypass") && p != current) p.hidePlayer(current);
-            }
-            //Add player to arraylist so he's vanished across relogs
-            ServerSystem.vanish.add(current);
-            current.sendMessage(Strings.VANISH_NOW_VANISHED.getString());
+            //Remove player from vanish arraylist
+            ServerSystem.vanish.remove(current);
 
+            //Make player visible again
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                if (p != current) p.showPlayer(current);
+            }
+
+            //Notify player
+            current.sendMessage(Strings.VAHISH_UNVANISHED.getString());
             return true;
         } else {
-            ServerSystem.onUnknownCommand((Player) sender, "vanish");
+            ServerSystem.onUnknownCommand((Player) sender, "unvanish");
             return false;
         }
     }

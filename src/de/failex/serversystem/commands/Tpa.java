@@ -9,9 +9,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 /**
- * Request a player to teleport to the current position
+ * Teleport request to another player
  */
-public class CMD_tpahere implements CommandExecutor {
+public class Tpa implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
         if (args.length > 0) {
@@ -29,12 +29,10 @@ public class CMD_tpahere implements CommandExecutor {
 
             //Save both players in hash map and set destination as key for later
             ServerSystem.tpalist.put(destination.getUniqueId(), requester.getUniqueId());
-            ServerSystem.tpatype.put(destination.getUniqueId(), "tpahere");
-
+            ServerSystem.tpatype.put(destination.getUniqueId(), "tpa");
             //Notify both players
-            sender.sendMessage(Strings.TPA_SENDING.getString().replace("%s", destination.getName()));
-            destination.sendMessage(Strings.TPA_NOTIFICATION_LINE1.getString().replace("%s", requester.getName()));
-
+            sender.sendMessage(String.format(Strings.TPA_SENDING.getString(), destination.getName()));
+            destination.sendMessage(String.format(Strings.TPA_NOTIFICATION_LINE1.getString(), requester.getName()));
             return true;
 
         } else {
