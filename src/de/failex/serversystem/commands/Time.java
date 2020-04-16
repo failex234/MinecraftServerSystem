@@ -50,11 +50,11 @@ public class Time implements CommandExecutor {
                             catch (NumberFormatException e) {
                                 switch (args[1]) {
                                     case "day":
-                                        p.getWorld().setTime(12000);
+                                        p.getWorld().setTime(0);
                                         p.sendMessage(String.format(Strings.TIME_SET_TO.getString(), p.getWorld().getName(), "daylight"));
                                         return true;
                                     case "night":
-                                        p.getWorld().setTime(20000);
+                                        p.getWorld().setTime(13400);
                                         p.sendMessage(String.format(Strings.TIME_SET_TO.getString(), p.getWorld().getName(), "nighttime"));
                                         return true;
                                     default:

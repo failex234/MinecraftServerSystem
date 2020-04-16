@@ -43,12 +43,10 @@ public class ServerSystem extends JavaPlugin {
     public static int onlineplayers;
 
     //Config for changing plugin settings and Playerdata File for storing homes and other stuff from players
-    private static File config = new File("config.yml");
-    private static File playerdata = new File("players.yml");
+    public File playerdata = new File(getDataFolder(), "players.yml");
 
     //FileConfigurations for config and playerdata file
-    public static FileConfiguration configcfg = YamlConfiguration.loadConfiguration(config);
-    public static FileConfiguration playerdatacfg = YamlConfiguration.loadConfiguration(playerdata);
+    public FileConfiguration playerdatacfg = YamlConfiguration.loadConfiguration(playerdata);
 
     //Class-Variable for specific methods that you can't run without a static class variable
     public static ServerSystem system;

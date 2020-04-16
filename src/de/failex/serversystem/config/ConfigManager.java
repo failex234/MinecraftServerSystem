@@ -2,6 +2,8 @@ package de.failex.serversystem.config;
 
 import de.failex.serversystem.ServerSystem;
 
+import java.io.IOException;
+
 public class ConfigManager {
 
     /**
@@ -10,7 +12,8 @@ public class ConfigManager {
      * @param value new value / initial value of key
      */
     public static void set(String key, String value) {
-        ServerSystem.configcfg.set(key, value);
+        ServerSystem.system.getConfig().set(key, value);
+        ServerSystem.system.saveConfig();
         ServerSystem.system.reloadConfig();
     }
 
@@ -20,7 +23,10 @@ public class ConfigManager {
      * @return value from key, null if non-existent
      */
     public static String get(String key) {
-        return (String) ServerSystem.configcfg.get(key);
+        if (ServerSystem.system.getConfig().get(key) == null) {
+            return null;
+        }
+        return (String) ServerSystem.system.getConfig().get(key);
     }
 
     /**
@@ -30,7 +36,12 @@ public class ConfigManager {
      * @param value what value to set
      */
     public static void setPlayer(String player, String key, String value) {
-        ServerSystem.playerdatacfg.set(player + "." + "key", value);
+        ServerSystem.system.playerdatacfg.set(player + "." + key, value);
+        try {
+            ServerSystem.system.playerdatacfg.save(ServerSystem.system.playerdata);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ServerSystem.system.reloadConfig();
     }
 
@@ -41,7 +52,7 @@ public class ConfigManager {
      * @return the data from the player, null if non-existent
      */
     public static String getFromPlayer(String player, String key) {
-        return (String) ServerSystem.playerdatacfg.get(player + "." + key);
+        return (String) ServerSystem.system.playerdatacfg.get(player + "." + key);
     }
 
 }

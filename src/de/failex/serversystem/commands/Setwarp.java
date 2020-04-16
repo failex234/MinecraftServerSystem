@@ -60,11 +60,11 @@ public class Setwarp implements CommandExecutor {
                             double pitch = currLoc.getPitch();
 
                             //Save to config
-                            ConfigManager.set(p.getWorld().getName() + "." + warp.toLowerCase() + ".X", x + "");
-                            ConfigManager.set(p.getWorld().getName() + "." + warp.toLowerCase() + ".Y", y + "");
-                            ConfigManager.set(p.getWorld().getName() + "." + warp.toLowerCase() + ".Z", z + "");
-                            ConfigManager.set(p.getWorld().getName() + "." + warp.toLowerCase() + ".pitch", pitch + "");
-                            ConfigManager.set(p.getWorld().getName() + "." + warp.toLowerCase() + ".yaw", yaw + "");
+                            ConfigManager.set("warps." + warp.toLowerCase() + ".X", x + "");
+                            ConfigManager.set("warps." + warp.toLowerCase() + ".Y", y + "");
+                            ConfigManager.set("warps." + warp.toLowerCase() + ".Z", z + "");
+                            ConfigManager.set("warps." + warp.toLowerCase() + ".pitch", pitch + "");
+                            ConfigManager.set("warps." + warp.toLowerCase() + ".yaw", yaw + "");
                             ConfigManager.set("warps." + warp.toLowerCase() + ".world", p.getWorld().getName());
 
                             //Save warp name to list to fetch all names later
@@ -97,11 +97,11 @@ public class Setwarp implements CommandExecutor {
         } else {
             //Set all entries to null
             ConfigManager.set("warps." + warp.toLowerCase() + ".world", null);
-            ConfigManager.set(world + "." + warp.toLowerCase() + ".X", null);
-            ConfigManager.set(world + "." + warp.toLowerCase() + ".Y", null);
-            ConfigManager.set(world + "." + warp.toLowerCase() + ".Z", null);
-            ConfigManager.set(world + "." + warp.toLowerCase() + ".pitch", null);
-            ConfigManager.set(world + "." + warp.toLowerCase() + ".yaw", null);
+            ConfigManager.set("warps." + warp.toLowerCase() + ".X", null);
+            ConfigManager.set("warps." + warp.toLowerCase() + ".Y", null);
+            ConfigManager.set("warps." + warp.toLowerCase() + ".Z", null);
+            ConfigManager.set("warps." + warp.toLowerCase() + ".pitch", null);
+            ConfigManager.set("warps." + warp.toLowerCase() + ".yaw", null);
 
             //Notify player
             p.sendMessage(String.format(Strings.SETWARP_DELETED.getString(), warp));
